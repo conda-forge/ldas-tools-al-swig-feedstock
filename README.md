@@ -1,7 +1,7 @@
 About ldas-tools-al-swig
 ========================
 
-Home: https://ldastools.docs.ligo.org/LDAS_Tools/Beta/doc/ldas-tools-al/ldastoolsal/html/
+Home: https://docs.ligo.org/ldastools/LDAS_Tools/Beta/doc/ldas-tools-al/ldastoolsal/html/
 
 Package license: GPLv3
 
@@ -14,8 +14,8 @@ Summary: Python bindings for the LDAS Tools abstraction toolkit
 Current build status
 ====================
 
-[![Linux](https://img.shields.io/circleci/project/github/conda-forge/ldas-tools-al-swig-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/ldas-tools-al-swig-feedstock)
-[![OSX](https://img.shields.io/travis/conda-forge/ldas-tools-al-swig-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/ldas-tools-al-swig-feedstock)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/ldas-tools-al-swig-origin-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/ldas-tools-al-swig-origin-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/ldas-tools-al-swig-origin-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/ldas-tools-al-swig-origin-feedstock)
 ![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
