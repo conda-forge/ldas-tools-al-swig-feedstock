@@ -3,17 +3,21 @@
 mkdir -p build
 pushd build
 
-if [ "${PY3K}" -eq 1 ]; then
-	_PYTHON_BUILD_OPTS="-DENABLE_SWIG_PYTHON2=no -DENABLE_SWIG_PYTHON3=yes -DPYTHON3_EXECUTABLE=${PYTHON}"
-else
-	_PYTHON_BUILD_OPTS="-DENABLE_SWIG_PYTHON3=no -DENABLE_SWIG_PYTHON2=yes -DPYTHON2_EXECUTABLE=${PYTHON}"
-fi
-
+# configure
 cmake .. \
-	${_PYTHON_BUILD_OPTS} \
-	-DCMAKE_INSTALL_PREFIX=${PREFIX}
-cmake --build . --config Release -- -j${CPU_COUNT}
+	-DCMAKE_INSTALL_PREFIX=${PREFIX} \
+	-DCMAKE_BUILD_TYPE=RelWithBuildInfo \
+	-DCMAKE_EXPORT_COMPILE_COMMANDS=1 \
+	-DENABLE_SWIG_PYTHON2=no \
+	-DENABLE_SWIG_PYTHON3=no
+
+# build
+cmake --build . -- -j${CPU_COUNT}
+
+# install [NOTE: we don't install because this package is essentially empty]
+#cmake --build . --target install
+
+# test
 ctest -V
-cmake --build . --target install
 
 popd
