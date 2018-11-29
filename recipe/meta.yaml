@@ -27,8 +27,7 @@ requirements:
 
 outputs:
   - name: python-ldas-tools-al
-    script: install-python.sh  # [not win]
-    script: install-python.bat  # [win]
+    script: install-python.sh
     build:
       activate_in_script: true
     requirements:

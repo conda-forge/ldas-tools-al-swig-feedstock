@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -ex
 pushd ${SRC_DIR}/build
 
 # get python options
