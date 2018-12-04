@@ -1,6 +1,7 @@
 {% set name = "ldas-tools-al-swig" %}
-{% set version = "2.6.4" %}
-{% set sha256 = "70c218dcdd000c9c6108b297e134b316a37d89fbd2627e1a47a459690c5a43d1" %}
+{% set version = "2.6.5" %}
+{% set sha256 = "32250c932360c509ced6f5efcbdd2379535b0f8b869313cae0cce40883f7c875" %}
+{% set ldas_tools_cmake_version = "1.0.4" %}
 
 package:
   name: {{ name }}
@@ -17,54 +18,45 @@ build:
 
 requirements:
   build:
-    - pkg-config
-    - make
-    - cmake >=3.6
     - {{ compiler('cxx') }}
-  host:
+    - cmake >=3.6
+    - pkg-config  # [not win]
+    - make  # [not win]
     - swig
-    - ldas-tools-al >=2.6.0
-    - ldas-tools-cmake >=1.0.3
-    - boost-cpp
-    - python
-  run:
-    - ldas-tools-al >=2.6.0
-    - python
-
-test:
-  imports:
-    - LDAStools
+  host:
+    - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
 
 outputs:
   - name: python-ldas-tools-al
+    script: install-python.sh
+    build:
+      activate_in_script: true
     requirements:
+      build:
+        - {{ compiler('cxx') }}
+        - cmake >=3.6
+        - pkg-config  # [not win]
+        - make  # [not win]
+        - swig
       host:
-        - ldas-tools-al >=2.6.0
+        - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
         - python
-        - numpy
       run:
-        - ldas-tools-al >=2.6.0
         - python
-        - {{ pin_compatible('numpy') }}
-    files:
-      - lib/python*/site-packages/LDAStools/__init__.py*
-      - lib/python*/site-packages/LDAStools/__pycache__/__init__.*.py*  # [not py27]
     test:
       imports:
         - LDAStools
     about:
-      home: https://ldastools.docs.ligo.org/LDAS_Tools/Beta/doc/ldas-tools-al/ldastoolsal/html/
+      home: https://docs.ligo.org/ldastools/LDAS_Tools/Beta/doc/ldas-tools-al/ldastoolsal/html/
       dev_url: https://git.ligo.org/ldastools/LDAS_Tools
-      doc_url: https://ldastools.docs.ligo.org/LDAS_Tools/Beta/doc/ldas-tools-al/ldastoolsal/html/
+      doc_url: https://docs.ligo.org/ldastools/LDAS_Tools/Beta/doc/ldas-tools-al/ldastoolsal/html/
       license: GPLv3
       license_family: GPL
       license_file: COPYING
       summary: Python bindings for the LDAS Tools abstraction toolkit
 
 about:
-  home: https://ldastools.docs.ligo.org/LDAS_Tools/Beta/doc/ldas-tools-al/ldastoolsal/html/
-  dev_url: https://git.ligo.org/ldastools/LDAS_Tools
-  doc_url: https://ldastools.docs.ligo.org/LDAS_Tools/Beta/doc/ldas-tools-al/ldastoolsal/html/
+  home: https://docs.ligo.org/ldastools/LDAS_Tools/Beta/doc/ldas-tools-al/ldastoolsal/html/
   license: GPLv3
   license_family: GPL
   license_file: COPYING
