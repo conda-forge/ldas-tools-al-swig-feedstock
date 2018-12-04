@@ -6,8 +6,7 @@ pushd build
 # configure
 cmake .. \
 	-DCMAKE_INSTALL_PREFIX=${PREFIX} \
-	-DCMAKE_BUILD_TYPE=RelWithBuildInfo \
-	-DCMAKE_EXPORT_COMPILE_COMMANDS=1 \
+	-DCMAKE_BUILD_TYPE=Release \
 	-DENABLE_SWIG_PYTHON2=no \
 	-DENABLE_SWIG_PYTHON3=no
 
