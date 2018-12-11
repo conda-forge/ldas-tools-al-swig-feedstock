@@ -6,10 +6,8 @@ pushd ${SRC_DIR}/build
 # get python options
 if [ "${PY3K}" -eq 1 ]; then
   PYTHON_BUILD_OPTS="-DENABLE_SWIG_PYTHON2=no -DENABLE_SWIG_PYTHON3=yes -DPYTHON3_EXECUTABLE=${PYTHON}"
-  PYTHON_BUILD_DIR="python3"
 else
   PYTHON_BUILD_OPTS="-DENABLE_SWIG_PYTHON3=no -DENABLE_SWIG_PYTHON2=yes -DPYTHON2_EXECUTABLE=${PYTHON}"
-  PYTHON_BUILD_DIR="python"
 fi
 
 # configure
@@ -20,10 +18,10 @@ cmake .. \
   ${PYTHON_BUILD_OPTS}
 
 # build
-cmake --build ${PYTHON_BUILD_DIR} -- -j${CPU_COUNT}
+cmake --build python -- -j${CPU_COUNT}
 
 # install
-cmake --build ${PYTHON_BUILD_DIR} --target install
+cmake --build python --target install
 
 # test
 ctest -V
