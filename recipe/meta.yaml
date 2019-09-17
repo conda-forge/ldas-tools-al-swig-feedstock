@@ -13,7 +13,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1000
+  number: 1001
   skip: true  # [win]
 
 requirements:
@@ -26,7 +26,13 @@ requirements:
   host:
     - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
 
+test:
+  commands:
+    - test -f ${PREFIX}/include/ldastoolsal/gpstime.i  # [not win]
+
 outputs:
+  - name: ldas-tools-al-swig
+
   - name: python-ldas-tools-al
     script: install-python.sh
     build:
@@ -47,16 +53,16 @@ outputs:
       imports:
         - LDAStools
     about:
-      home: https://docs.ligo.org/ldastools/LDAS_Tools/Beta/doc/ldas-tools-al/ldastoolsal/html/
+      home: https://wiki.ligo.org/Computing/LDASTools
       dev_url: https://git.ligo.org/ldastools/LDAS_Tools
-      doc_url: https://docs.ligo.org/ldastools/LDAS_Tools/Beta/doc/ldas-tools-al/ldastoolsal/html/
       license: GPLv3
       license_family: GPL
       license_file: COPYING
       summary: Python bindings for the LDAS Tools abstraction toolkit
 
 about:
-  home: https://docs.ligo.org/ldastools/LDAS_Tools/Beta/doc/ldas-tools-al/ldastoolsal/html/
+  home: https://wiki.ligo.org/Computing/LDASTools
+  dev_url: https://git.ligo.org/ldastools/LDAS_Tools
   license: GPLv3
   license_family: GPL
   license_file: COPYING

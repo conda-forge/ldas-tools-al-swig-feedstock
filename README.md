@@ -1,28 +1,73 @@
 About ldas-tools-al-swig
 ========================
 
-Home: https://docs.ligo.org/ldastools/LDAS_Tools/Beta/doc/ldas-tools-al/ldastoolsal/html/
+Home: https://wiki.ligo.org/Computing/LDASTools
 
 Package license: GPLv3
 
 Feedstock license: BSD 3-Clause
 
-Summary: Python bindings for the LDAS Tools abstraction toolkit
+Summary: SWIG bindings for the LDAS Tools abstraction toolkit
 
 
 
 Current build status
 ====================
 
-[![Linux](https://img.shields.io/circleci/project/github/conda-forge/ldas-tools-al-swig-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/ldas-tools-al-swig-feedstock)
-[![OSX](https://img.shields.io/travis/conda-forge/ldas-tools-al-swig-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/ldas-tools-al-swig-feedstock)
-![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
+
+<table>
+    
+  <tr>
+    <td>Azure</td>
+    <td>
+      <details>
+        <summary>
+          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=6045&branchName=master">
+            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ldas-tools-al-swig-feedstock?branchName=master">
+          </a>
+        </summary>
+        <table>
+          <thead><tr><th>Variant</th><th>Status</th></tr></thead>
+          <tbody><tr>
+              <td>linux</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=6045&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ldas-tools-al-swig-feedstock?branchName=master&jobName=linux&configuration=linux_" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=6045&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/ldas-tools-al-swig-feedstock?branchName=master&jobName=osx&configuration=osx_" alt="variant">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </details>
+    </td>
+  </tr>
+  <tr>
+    <td>Windows</td>
+    <td>
+      <img src="https://img.shields.io/badge/Windows-disabled-lightgrey.svg" alt="Windows disabled">
+    </td>
+  </tr>
+  <tr>
+    <td>Linux_ppc64le</td>
+    <td>
+      <img src="https://img.shields.io/badge/ppc64le-disabled-lightgrey.svg" alt="ppc64le disabled">
+    </td>
+  </tr>
+</table>
 
 Current release info
 ====================
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-ldas--tools--al--swig-green.svg)](https://anaconda.org/conda-forge/ldas-tools-al-swig) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/ldas-tools-al-swig.svg)](https://anaconda.org/conda-forge/ldas-tools-al-swig) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/ldas-tools-al-swig.svg)](https://anaconda.org/conda-forge/ldas-tools-al-swig) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/ldas-tools-al-swig.svg)](https://anaconda.org/conda-forge/ldas-tools-al-swig) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-python--ldas--tools--al-green.svg)](https://anaconda.org/conda-forge/python-ldas-tools-al) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/python-ldas-tools-al.svg)](https://anaconda.org/conda-forge/python-ldas-tools-al) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/python-ldas-tools-al.svg)](https://anaconda.org/conda-forge/python-ldas-tools-al) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/python-ldas-tools-al.svg)](https://anaconda.org/conda-forge/python-ldas-tools-al) |
 
 Installing ldas-tools-al-swig
@@ -34,21 +79,23 @@ Installing `ldas-tools-al-swig` from the `conda-forge` channel can be achieved b
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `python-ldas-tools-al` can be installed with:
+Once the `conda-forge` channel has been enabled, `ldas-tools-al-swig, python-ldas-tools-al` can be installed with:
 
 ```
-conda install python-ldas-tools-al
+conda install ldas-tools-al-swig python-ldas-tools-al
 ```
 
-It is possible to list all of the versions of `python-ldas-tools-al` available on your platform with:
+It is possible to list all of the versions of `ldas-tools-al-swig` available on your platform with:
 
 ```
-conda search python-ldas-tools-al --channel conda-forge
+conda search ldas-tools-al-swig --channel conda-forge
 ```
 
 
 About conda-forge
 =================
+
+[![Powered by NumFOCUS](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](http://numfocus.org)
 
 conda-forge is a community-led conda channel of installable packages.
 In order to provide high-quality builds, the process has been automated into the
@@ -104,3 +151,10 @@ In order to produce a uniquely identifiable distribution:
  * If the version of a package **is** being increased, please remember to return
    the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string)
    back to 0.
+
+Feedstock Maintainers
+=====================
+
+* [@duncanmmacleod](https://github.com/duncanmmacleod/)
+* [@emaros](https://github.com/emaros/)
+
