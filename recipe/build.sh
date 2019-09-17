@@ -13,10 +13,8 @@ cmake .. \
 # build
 cmake --build . -- -j${CPU_COUNT}
 
-# install [NOTE: we don't install because this package is essentially empty]
-#cmake --build . --target install
-
 # test
 ctest -V
 
-popd
+# install [NOTE: we don't install because this package is essentially empty]
+cmake --build . --target install
