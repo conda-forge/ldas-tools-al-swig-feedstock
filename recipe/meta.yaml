@@ -25,7 +25,7 @@ requirements:
     - make  # [not win]
     - swig
   host:
-    - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
+    - ldas-tools-cmake >={{ ldas_tools_cmake_version }},<1.2.0
 
 test:
   commands:
@@ -46,7 +46,7 @@ outputs:
         - make  # [not win]
         - swig
       host:
-        - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
+        - ldas-tools-cmake >={{ ldas_tools_cmake_version }},<1.2.0
         - python
       run:
         - python
