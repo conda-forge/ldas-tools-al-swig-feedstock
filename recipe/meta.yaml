@@ -2,7 +2,7 @@
 {% set version = "2.6.8" %}
 {% set sha256 = "cc9c4730a2f87c7cdf2201d886ca2a6db2b02c4ac6f4beccceb7dfc010cf4a24" %}
 
-{% set ldas_tools_cmake_version = "1.0.8" %}
+{% set ldas_tools_cmake_version = "1.2.2" %}
 
 package:
   name: {{ name }}
@@ -25,7 +25,7 @@ requirements:
     - make  # [not win]
     - swig
   host:
-    - ldas-tools-cmake >={{ ldas_tools_cmake_version }},<1.2.0
+    - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
 
 test:
   commands:
@@ -33,20 +33,25 @@ test:
 
 outputs:
   - name: ldas-tools-al-swig
+    about:
+      home: https://wiki.ligo.org/Computing/LDASTools
+      dev_url: https://git.ligo.org/ldastools/LDAS_Tools
+      license: GPL-3.0-or-later
+      license_family: GPL
+      license_file: COPYING
+      summary: SWIG bindings for the LDAS Tools abstraction toolkit
 
   - name: python-ldas-tools-al
     script: install-python.sh
-    build:
-      activate_in_script: true
     requirements:
       build:
         - {{ compiler('cxx') }}
         - cmake >=3.6
-        - pkg-config  # [not win]
-        - make  # [not win]
+        - pkg-config  # [unix]
+        - make  # [unix]
         - swig
       host:
-        - ldas-tools-cmake >={{ ldas_tools_cmake_version }},<1.2.0
+        - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
         - python
       run:
         - python
@@ -56,7 +61,7 @@ outputs:
     about:
       home: https://wiki.ligo.org/Computing/LDASTools
       dev_url: https://git.ligo.org/ldastools/LDAS_Tools
-      license: GPLv3
+      license: GPL-3.0-or-later
       license_family: GPL
       license_file: COPYING
       summary: Python bindings for the LDAS Tools abstraction toolkit
@@ -64,7 +69,7 @@ outputs:
 about:
   home: https://wiki.ligo.org/Computing/LDASTools
   dev_url: https://git.ligo.org/ldastools/LDAS_Tools
-  license: GPLv3
+  license: GPL-3.0-or-later
   license_family: GPL
   license_file: COPYING
   summary: SWIG bindings for the LDAS Tools abstraction toolkit
