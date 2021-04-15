@@ -3,7 +3,7 @@ About ldas-tools-al-swig
 
 Home: https://wiki.ligo.org/Computing/LDASTools
 
-Package license: GPLv3
+Package license: GPL-3.0-or-later
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ldas-tools-al-swig-feedstock/blob/master/LICENSE.txt)
 
