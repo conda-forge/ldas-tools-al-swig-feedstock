@@ -1,6 +1,6 @@
 {% set name = "ldas-tools-al-swig" %}
-{% set version = "2.6.8" %}
-{% set sha256 = "cc9c4730a2f87c7cdf2201d886ca2a6db2b02c4ac6f4beccceb7dfc010cf4a24" %}
+{% set version = "2.6.9" %}
+{% set sha256 = "2d4c3451e82c18b6c2a300f8a894066eb16dd471a731c17fce604117504d1d65" %}
 
 {% set ldas_tools_cmake_version = "1.2.2" %}
 
