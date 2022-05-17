@@ -24,6 +24,8 @@ cmake --build python -- -j${CPU_COUNT}
 cmake --build python --target install
 
 # test
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
 ctest -V
+fi
 
 popd
