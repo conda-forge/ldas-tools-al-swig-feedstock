@@ -46,9 +46,12 @@ outputs:
       build:
         - {{ compiler('cxx') }}
         - cmake >=3.6
-        - pkg-config  # [unix]
         - make  # [unix]
+        - pkg-config  # [unix]
         - swig
+        # extras for cross compilation
+        - cross-python_{{ target_platform }}  # [build_platform != target_platform]
+        - python                              # [build_platform != target_platform]
       host:
         - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
         - python
