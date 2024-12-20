@@ -1,8 +1,9 @@
 {% set name = "ldas-tools-al-swig" %}
-{% set version = "2.6.10" %}
+{% set version = "2.6.11" %}
 
 # dependency versions
-{% set ldas_tools_cmake_version = "1.2.3" %}
+{% set ldas_tools_cmake_version = "1.3.1" %}
+{% set swig_version = "3.0.7" %}
 
 package:
   name: {{ name }}
@@ -10,10 +11,10 @@ package:
 
 source:
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
-  sha256: 9c0482930e964be8fe92e995bb5299bc258fafc6986cfdc15645ca1a08ab54da
+  sha256: 3225e39d674b44b291f4e8fddd0037eef8efe63c4dca488dde139830cd511e3c
 
 build:
-  number: 4
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -23,7 +24,7 @@ requirements:
     - cmake >=3.6
     - pkg-config  # [not win]
     - make  # [not win]
-    - swig
+    - swig >={{ swig_version }}
   host:
     - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
 
@@ -50,7 +51,7 @@ outputs:
         - cmake >=3.6
         - make  # [unix]
         - pkg-config  # [unix]
-        - swig
+        - swig >={{ swig_version }}
         # extras for cross compilation
         - cross-python_{{ target_platform }}  # [build_platform != target_platform]
         - python                              # [build_platform != target_platform]
