@@ -2,7 +2,8 @@
 {% set version = "2.6.11" %}
 
 # dependency versions
-{% set ldas_tools_cmake_version = "1.2.3" %}
+{% set ldas_tools_cmake_version = "1.3.1" %}
+{% set swig_version = "3.0.7" %}
 
 package:
   name: {{ name }}
@@ -23,7 +24,7 @@ requirements:
     - cmake >=3.6
     - pkg-config  # [not win]
     - make  # [not win]
-    - swig
+    - swig >={{ swig_version }}
   host:
     - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
 
@@ -50,7 +51,7 @@ outputs:
         - cmake >=3.6
         - make  # [unix]
         - pkg-config  # [unix]
-        - swig
+        - swig >={{ swig_version }}
         # extras for cross compilation
         - cross-python_{{ target_platform }}  # [build_platform != target_platform]
         - python                              # [build_platform != target_platform]
