@@ -1,5 +1,5 @@
 {% set name = "ldas-tools-al-swig" %}
-{% set version = "2.6.11" %}
+{% set version = "2.6.13" %}
 
 # dependency versions
 {% set ldas_tools_cmake_version = "1.3.1" %}
@@ -11,10 +11,10 @@ package:
 
 source:
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
-  sha256: 3225e39d674b44b291f4e8fddd0037eef8efe63c4dca488dde139830cd511e3c
+  sha256: 0cd3684a13f2be74112ace47aa88014d6cc8706b6134f8d622e1e71b5872b232
 
 build:
-  number: 2
+  number: 0
   skip: true  # [win]
 
 requirements:
