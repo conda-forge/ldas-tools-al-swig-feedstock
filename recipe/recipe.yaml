@@ -1,0 +1,93 @@
+schema_version: 1
+
+context:
+  name: ldas-tools-al-swig
+  version: 2.6.14
+  # dependency versions
+  ldas_tools_cmake_version: 1.3.1
+  swig_version: 3.0.7
+
+recipe:
+  name: ${{ name }}
+  version: ${{ version }}
+
+source:
+  url: http://software.ligo.org/lscsoft/source/${{ name }}-${{ version }}.tar.gz
+  sha256: a6a0c95e09d671b1df3e3a7cdc43616de2e39294fe6f9df8a71e6e74dbf3e54e
+
+build:
+  number: 0
+  skip:
+    - win
+
+outputs:
+  - staging:
+      name: ldas-tools-al-swig-build
+    build:
+      script: build.sh
+    requirements:
+      build:
+        - ${{ compiler('cxx') }}
+        - ${{ stdlib('c') }}
+        - cmake >=3.6
+        - pkg-config
+        - make
+        - swig >=${{ swig_version }}
+      host:
+        - ldas-tools-cmake >=${{ ldas_tools_cmake_version }}
+
+  - package:
+      name: ldas-tools-al-swig
+    inherit: ldas-tools-al-swig-build
+    build:
+      files:
+        - include/ldastoolsal/gpstime.i
+    tests:
+      - package_contents:
+          include:
+            - ldastoolsal/gpstime.i
+
+  - package:
+      name: python-ldas-tools-al
+    inherit:
+      from: ldas-tools-al-swig-build
+      run_exports: false
+    build:
+      script:
+        file: install-python.sh
+    requirements:
+      build:
+        - ${{ compiler('cxx') }}
+        - ${{ stdlib('c') }}
+        - cmake >=3.6
+        - make
+        - pkg-config
+        - swig >=${{ swig_version }}
+        # extras for cross compilation
+        - if: build_platform != target_platform
+          then:
+            - cross-python_${{ target_platform }}
+            - python
+      host:
+        - ldas-tools-cmake >=${{ ldas_tools_cmake_version }}
+        - python
+      run:
+        - python
+    tests:
+      - python:
+          imports:
+            - LDAStools
+    about:
+      summary: Python bindings for the LDAS Tools abstraction toolkit
+
+about:
+  license: GPL-3.0-or-later
+  license_file: COPYING
+  summary: SWIG bindings for the LDAS Tools abstraction toolkit
+  homepage: https://wiki.ligo.org/Computing/LDASTools
+  repository: https://git.ligo.org/ldastools/LDAS_Tools
+
+extra:
+  recipe-maintainers:
+    - duncanmmacleod
+    - emaros
