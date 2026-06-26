@@ -17,8 +17,6 @@ source:
 
 build:
   number: 0
-  skip:
-    - win
 
 outputs:
   - staging:
@@ -40,6 +38,7 @@ outputs:
       name: ldas-tools-al-swig
     inherit: ldas-tools-al-swig-build
     build:
+      noarch: generic
       files:
         - include/ldastoolsal/gpstime.i
     tests:
