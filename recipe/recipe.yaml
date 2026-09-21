@@ -18,10 +18,11 @@ build:
   number: 0
 
 outputs:
-  - staging:
-      name: ldas-tools-al-swig-build
+  - package:
+      name: ldas-tools-al-swig
     build:
-      script: build.sh
+      noarch: generic
+      script: build
     requirements:
       build:
         - ${{ compiler('cxx') }}
@@ -32,14 +33,6 @@ outputs:
         - swig >=${{ swig_version }}
       host:
         - ldas-tools-cmake >=${{ ldas_tools_cmake_version }}
-
-  - package:
-      name: ldas-tools-al-swig
-    inherit: ldas-tools-al-swig-build
-    build:
-      noarch: generic
-      files:
-        - include/ldastoolsal/gpstime.i
     tests:
       - package_contents:
           include:
@@ -47,13 +40,11 @@ outputs:
 
   - package:
       name: python-ldas-tools-al
-    inherit:
-      from: ldas-tools-al-swig-build
-      run_exports: false
     build:
       noarch: python
-      script:
-        file: install-python.sh
+      script: build-python
+      files:
+        - lib/python*/site-packages/
     requirements:
       build:
         - ${{ compiler('cxx') }}
@@ -79,11 +70,11 @@ outputs:
       summary: Python bindings for the LDAS Tools abstraction toolkit
 
 about:
-  license: GPL-3.0-or-later
-  license_file: COPYING
   summary: SWIG bindings for the LDAS Tools abstraction toolkit
   homepage: https://wiki.ligo.org/Computing/LDASTools
   repository: https://git.ligo.org/ldastools/LDAS_Tools
+  license: GPL-3.0-or-later
+  license_file: COPYING
 
 extra:
   recipe-maintainers:
