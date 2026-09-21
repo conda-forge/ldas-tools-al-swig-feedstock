@@ -1,23 +1,24 @@
 #!/bin/bash
 
-mkdir -p build
-pushd build
+set -ex
+
+BUILD_DIR=$(pwd)/_build
 
 # configure
-cmake ${CMAKE_ARGS} .. \
-	-DCMAKE_INSTALL_PREFIX=${PREFIX} \
-	-DCMAKE_BUILD_TYPE=Release \
-	-DENABLE_SWIG_PYTHON2=no \
-	-DENABLE_SWIG_PYTHON3=no \
-	-DCMAKE_POLICY_VERSION_MINIMUM=3.5
+cmake \
+  ${CMAKE_ARGS} \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+  -DENABLE_SWIG_PYTHON3=no \
+  -S ${SRC_DIR} \
+  -B ${BUILD_DIR}
 
 # build
-cmake --build . -- -j${CPU_COUNT}
+cmake --build ${BUILD_DIR} --parallel ${CPU_COUNT}
 
 # test
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
-ctest -V
+ctest --output-on-failure --test-dir ${BUILD_DIR} --verbose --verbose
 fi
 
-# install [NOTE: we don't install because this package is essentially empty]
-cmake --build . --target install
+# install
+cmake --build ${BUILD_DIR} --parallel ${CPU_COUNT} --target install
